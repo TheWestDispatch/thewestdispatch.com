@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The West Dispatch</title>
-    <!-- Tailwind CSS CDN für schnelles, responsives Styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS CDN für schnelles, responsives Styling --><script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Font: Lato -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <!-- Google Font: Lato --><link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome für Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Font Awesome für Icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         /* CSS für das Styling */
@@ -101,105 +98,80 @@
 <body class="flex flex-col items-center p-4 py-8 relative">
     <!-- Überlagerung für bessere Lesbarkeit --><div class="overlay"></div>
 
-    <!-- 1. HEADER: Social Media & Logo (Breite 4XL für mehr Platz) -->
-    <header class="max-w-4xl w-full content-box relative z-20 mb-6 p-4">
+    <!-- 1. HEADER: Social Media & Logo (Breite 4XL für mehr Platz) --><header class="max-w-4xl w-full content-box relative z-20 mb-6 p-4">
         <div class="flex flex-col md:flex-row justify-between items-center">
             
-            <!-- Logo/Titel Links -->
-            <a href="index.html" class="text-[#ffa45e] font-black text-3xl tracking-widest uppercase mb-4 md:mb-0  transition duration-200">
+            <!-- Logo/Titel Links --><a href="index.html" class="text-[#ffa45e] font-black text-3xl tracking-widest uppercase mb-4 md:mb-0  transition duration-200">
                 THE WEST DISPATCH
             </a>
             
-            <!-- Navigation Rechts -->
-            <nav class="flex flex-wrap justify-center md:justify-end space-x-4 md:space-x-8 text-lg font-semibold">
+            <!-- Navigation Rechts --><nav class="flex flex-wrap justify-center md:justify-end space-x-4 md:space-x-8 text-lg font-semibold">
                 <a href="index.html" class="accent-text hover:underline transition duration-200">Home</a>
-                <!-- Hover-Farbe auf #ffa45e geändert -->
-                <a href="radio.html" class="text-white hover:text-[#ffa45e] transition duration-200">Radio</a>
-                <!-- Hover-Farbe auf #ffa45e geändert -->
-                <a href="info.html" class="text-white hover:text-[#ffa45e] transition duration-200">Info</a>
+                <!-- Hover-Farbe auf #ffa45e geändert --><a href="radio.html" class="text-white hover:text-[#ffa45e] transition duration-200">Radio</a>
+                
             </nav>
         </div>
     </header>
 
-     <!-- NEUE BOX: DEUTSCHER CONTENT -->
-        <div class="w-full content-box p-4 mb-4 text-center">
-            <p class="text-xl font-bold text-[#80ffd7] uppercase tracking-wide">Deutscher Content über die Musikszene</p>
+     <!-- NEUE BOX: DEUTSCHER CONTENT --><div class="w-full content-box p-4 mb-4 text-center">
+            <p class="text-xl font-bold text-[#80ffd7] uppercase tracking-wide">Musik muss man teilen!</p>
         </div>
-
-    <!-- NEUER ABSCHNITT: Social Media Promotions (4 Boxen nebeneinander) -->
-    <section class="max-w-4xl w-full relative z-10 mb-6">
-        <!-- Das Grid wurde von md:grid-cols-3 auf lg:grid-cols-4 umgestellt, um 4 Boxen nebeneinander zu ermöglichen -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+ <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@thewestdispatch" data-unique-id="thewestdispatch" data-embed-type="creator" style="max-width: 780px; min-width: 288px;" > <section> <a target="_blank" href="https://www.tiktok.com/@thewestdispatch?refer=creator_embed">@thewestdispatch</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+    <!-- NEUER ABSCHNITT: Social Media Promotions (4 Boxen nebeneinander) --><section class="max-w-4xl w-full relative z-10 mb-6">
+        <!-- Das Grid wurde von md:grid-cols-3 auf lg:grid-cols-4 umgestellt, um 4 Boxen nebeneinander zu ermöglichen --><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             
-            <!-- Box 1: YouTube -->
-            <!-- Klasse social-box für das quadratische Design und vertikale Ausrichtung hinzugefügt -->
-            <div class="content-box social-box">
-                <i class="fab fa-youtube text-7xl yt-icon mb-auto mt-auto"></i> <!-- Icon Größe vergrößert -->
-                <!-- Button mit yt-Farben -->
-                <a href="#" target="_blank" class="inline-block btn-yt font-bold py-3 px-6 shadow-md transition duration-200 uppercase text-sm tracking-wide mt-6">
+            <!-- Box 1: YouTube --><!-- Klasse social-box für das quadratische Design und vertikale Ausrichtung hinzugefügt --><div class="content-box social-box">
+                <i class="fab fa-youtube text-7xl yt-icon mb-auto mt-auto"></i> <!-- Icon Größe vergrößert --><!-- Button mit yt-Farben --><a href="#" target="_blank" class="inline-block btn-yt font-bold py-3 px-6 shadow-md transition duration-200 uppercase text-sm tracking-wide mt-6">
                     YouTube
                 </a>
             </div>
 
-            <!-- Box 2: TikTok -->
-            <!-- Klasse social-box für das quadratische Design und vertikale Ausrichtung hinzugefügt -->
-            <div class="content-box social-box">
-                <i class="fab fa-tiktok text-7xl tiktok-icon mb-auto mt-auto"></i> <!-- Icon Größe vergrößert -->
-                 <!-- Button mit tiktok-Farben -->
-                <a href="#" target="_blank" class="inline-block btn-tiktok font-bold py-3 px-6 shadow-md transition duration-200 uppercase text-sm tracking-wide mt-6">
+            <!-- Box 2: TikTok --><!-- Klasse social-box für das quadratische Design und vertikale Ausrichtung hinzugefügt --><div class="content-box social-box">
+                <i class="fab fa-tiktok text-7xl tiktok-icon mb-auto mt-auto"></i> <!-- Icon Größe vergrößert --><!-- Button mit tiktok-Farben --><a href="#" target="_blank" class="inline-block btn-tiktok font-bold py-3 px-6 shadow-md transition duration-200 uppercase text-sm tracking-wide mt-6">
                     TikTok
                 </a>
             </div>
 
-            <!-- Box 3: Instagram -->
-            <!-- Klasse social-box für das quadratische Design und vertikale Ausrichtung hinzugefügt -->
-            <div class="content-box social-box">
-                <i class="fab fa-instagram text-7xl insta-icon mb-auto mt-auto"></i> <!-- Icon Größe vergrößert -->
-                <!-- Button mit insta-Farben -->
-                <a href="#" target="_blank" class="inline-block btn-insta font-bold py-3 px-6 shadow-md transition duration-200 uppercase text-sm tracking-wide mt-6">
+            <!-- Box 3: Instagram --><!-- Klasse social-box für das quadratische Design und vertikale Ausrichtung hinzugefügt --><div class="content-box social-box">
+                <i class="fab fa-instagram text-7xl insta-icon mb-auto mt-auto"></i> <!-- Icon Größe vergrößert --><!-- Button mit insta-Farben --><a href="#" target="_blank" class="inline-block btn-insta font-bold py-3 px-6 shadow-md transition duration-200 uppercase text-sm tracking-wide mt-6">
                     Instagram
                 </a>
             </div>
 
-            <!-- Box 4: Facebook -->
-            <!-- Klasse social-box für das quadratische Design und vertikale Ausrichtung hinzugefügt -->
-            <div class="content-box social-box">
-                <i class="fab fa-facebook-f text-7xl fb-icon mb-auto mt-auto"></i> <!-- Icon Größe vergrößert -->
-                <!-- Button mit fb-Farben -->
-                <a href="#" target="_blank" class="inline-block btn-fb font-bold py-3 px-6 shadow-md transition duration-200 uppercase text-sm tracking-wide mt-6">
+            <!-- Box 4: Facebook --><!-- Klasse social-box für das quadratische Design und vertikale Ausrichtung hinzugefügt --><div class="content-box social-box">
+                <i class="fab fa-facebook-f text-7xl fb-icon mb-auto mt-auto"></i> <!-- Icon Größe vergrößert --><!-- Button mit fb-Farben --><a href="#" target="_blank" class="inline-block btn-fb font-bold py-3 px-6 shadow-md transition duration-200 uppercase text-sm tracking-wide mt-6">
                     Facebook
                 </a>
             </div>
         </div>
     </section>
-    <!-- ENDE: Social Media Promotions -->
+    <!-- ENDE: Social Media Promotions --><!-- 2. HAUPT-LAYOUT: Der Hauptinhalt nimmt jetzt die volle Breite ein --><main class="max-w-4xl w-full relative z-10 mb-6">
 
-    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@thewestdispatch" data-unique-id="thewestdispatch" data-embed-type="creator" style="max-width: 780px; min-width: 288px;" > <section> <a target="_blank" href="https://www.tiktok.com/@thewestdispatch?refer=creator_embed">@thewestdispatch</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
-    
-    <!-- 2. HAUPT-LAYOUT: Der Hauptinhalt nimmt jetzt die volle Breite ein -->
-    <main class="max-w-4xl w-full relative z-10 mb-6">
-
-        <!-- AKTUELLE SENDUNG BOX - Volle Breite -->
-        <section class="content-box">
+        <!-- AKTUELLE SENDUNG BOX - Volle Breite --><section class="content-box">
             
-            <!-- Überschrift geändert und Schriftgröße auf text-3xl reduziert -->
-            <h1 class="text-3xl font-extrabold mb-6 accent-text uppercase border-b border-gray-600 pb-2">THE WEST DISPATCH RADIO</h1>
             
-            <!-- NEU: Wrapper für quadratisches (1:1) Seitenverhältnis des Bildes -->
-            <div class="w-full aspect-video relative mb-4 overflow-hidden shadow-lg"> 
-                <!-- Bild oder Video-Vorschau -->
-                <img src="Images/week21.jpg" onerror="this.src='https://placehold.co/800x450/424242/ffffff?text=Aktuelles+Cover'" alt="Aktuelles Sendungscover" class="absolute inset-0 w-full h-full object-cover">
-            </div>
             
-            <h2 class="text-3xl font-bold mb-2 text-white">Ausgabe 23: The Great African Disco</h2>
-            <p class="text-lg text-gray-300 mb-4">Veröffentlicht am 23. November 2025</p>
+            <!-- NEU: Wrapper für quadratisches (1:1) Seitenverhältnis des Bildes --><a href="radio.html" class="block mb-4 relative group"> <!-- 'relative group' für Positionierung des Play-Buttons und Hover-Effekt --><div class="w-full aspect-video relative overflow-hidden shadow-lg"> 
+                    <!-- Bild oder Video-Vorschau --><img src="Images/week21.jpg" onerror="this.src='https://placehold.co/800x450/424242/ffffff?text=Aktuelles+Cover'" alt="Aktuelles Sendungscover" class="absolute inset-0 w-full h-full object-cover">
+                    
+                    <!-- PLAY-BUTTON OVERLAY --><div class="absolute inset-0 flex items-center justify-center 
+                                bg-black bg-opacity-30 text-white opacity-75 
+                                group-hover:opacity-100 transition-opacity duration-300">
+                        <svg class="h-24 w-24 text-[#80ffd7]" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+            </a>
+            
+            <h2 class="text-3xl font-bold mb-2 accent-text"> The West Dispatch Radio</h2>
+            <p class="text-lg text-gray-300 mb-4">Ausgabe 23 - 23.11.25 </p>
             
             <p class="text-white mb-6">
                 Tauchen Sie ein in die funkigen Rhythmen des afrikanischen Disco-Revivals. Diesen Monat haben wir Temi Kogbe eingeladen, um eine Auswahl an seltenen 80er-Jahre-Jams aus Nigeria, Ghana und der Elfenbeinküste zu präsentieren. Pure Energie für die Tanzfläche!
             </p>
 
-            <!-- Direkt-Link zur Unterseite/Player (Button-Stil übernommen) -->
-            <a href="Radio.html" class="inline-block accent-bg text-black font-bold py-3 px-6 shadow-md hover:accent-hover transition duration-200 uppercase text-sm tracking-wide">
+            <!-- Direkt-Link zur Unterseite/Player (Button-Stil übernommen) --><a href="Radio.html" class="inline-block accent-bg text-black font-bold py-3 px-6 shadow-md hover:accent-hover transition duration-200 uppercase text-sm tracking-wide">
                 Jetzt reinhören
             </a>
 
@@ -208,21 +180,18 @@
     
    
 
-    <!-- 3. FOOTER: Social Media Wiederholung & Copyright -->
-    <footer class="max-w-4xl w-full content-box relative z-10 mt-6 p-4 text-center text-sm text-gray-400">
-        <div class="flex justify-center space-x-6 text-[#80ffd7] mb-3">
-            <!-- Icons rechts (wie im Header der Unterseite) -->
-            <a href="#" target="_blank" aria-label="YouTube" class="text-2xl hover:text-white transition duration-200"><i class="fab fa-youtube"></i></a>
-            <a href="#" target="_blank" aria-label="Instagram" class="text-2xl hover:text-white transition duration-200"><i class="fab fa-instagram"></i></a>
-            <a href="#" target="_blank" aria-label="TikTok" class="text-2xl hover:text-white transition duration-200"><i class="fab fa-tiktok"></i></a>
-            <a href="#" target="_blank" aria-label="Facebook" class="text-2xl hover:text-white transition duration-200"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" target="_blank" aria-label="Mixcloud" class="text-2xl hover:text-white transition duration-200"><i class="fab fa-mixcloud"></i></a>
+    <!-- 3. FOOTER: Social Media Wiederholung & Copyright --><footer class="max-w-4xl w-full content-box relative z-10 mt-6 p-4 text-center text-sm text-gray-400">
+        <div class="flex justify-center space-x-6 text-[#80ffd7]">
+            <!-- Icons rechts (wie im Header der Unterseite). Größe auf 3xl erhöht. --><a href="#" target="_blank" aria-label="YouTube" class="text-3xl hover:text-white transition duration-200"><i class="fab fa-youtube"></i></a>
+            <a href="#" target="_blank" aria-label="Instagram" class="text-3xl hover:text-white transition duration-200"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank" aria-label="TikTok" class="text-3xl hover:text-white transition duration-200"><i class="fab fa-tiktok"></i></a>
+            <a href="#" target="_blank" aria-label="Facebook" class="text-3xl hover:text-white transition duration-200"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank" aria-label="Mixcloud" class="text-3xl hover:text-white transition duration-200"><i class="fab fa-mixcloud"></i></a>
         </div>
-        &copy; 2025 The West Dispatch Radio. Alle Rechte vorbehalten. | <a href="#" class="text-gray-500 hover:text-white transition duration-200">Impressum</a>
-    </footer>
+        
+        <!-- Der Copyright-Text wurde entfernt. --></footer>
     
-    <!-- 4. INSTAGRAM EMBED SCRIPT MUSS EINMAL PRO SEITE HINZUGEFÜGT WERDEN -->
-    <script async src="//www.instagram.com/embed.js"></script>
+    <!-- 4. INSTAGRAM EMBED SCRIPT MUSS EINMAL PRO SEITE HINZUGEFÜGT WERDEN --><script async src="//www.instagram.com/embed.js"></script>
 
 </body>
 </html>
