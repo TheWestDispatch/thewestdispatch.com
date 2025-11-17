@@ -22,6 +22,8 @@
             background-attachment: fixed; 
             color: #e2e8f0;
             min-height: 100vh;
+            /* Zusätzlicher Padding am Boden, um Platz für die feste Mixcloud-Player-Leiste zu schaffen */
+            padding-bottom: 120px; /* Höhe der Mixcloud-Leiste ist typischerweise 120px */
         }
         /* Überlagerung für bessere Lesbarkeit */
         .overlay {
@@ -107,7 +109,7 @@
             
             <!-- Navigation Rechts --><nav class="flex flex-wrap justify-center md:justify-end space-x-4 md:space-x-8 text-lg font-semibold">
                 <a href="index.html" class="accent-text hover:underline transition duration-200">Home</a>
-                <!-- Hover-Farbe auf #ffa45e geändert --><a href="radio.html" class="text-white hover:text-[#ffa45e] transition duration-200">Radio</a>
+                <!-- Hover-Farbe auf #ffa45e geändert --><!-- target="_blank" hinzugefügt --><a href="radio.html" target="_blank" class="text-white hover:text-[#ffa45e] transition duration-200">Radio</a>
                 
             </nav>
         </div>
@@ -151,7 +153,7 @@
             
             
             
-            <!-- NEU: Wrapper für quadratisches (1:1) Seitenverhältnis des Bildes --><a href="radio.html" class="block mb-4 relative group"> <!-- 'relative group' für Positionierung des Play-Buttons und Hover-Effekt --><div class="w-full aspect-video relative overflow-hidden shadow-lg"> 
+            <!-- NEU: Wrapper für quadratisches (1:1) Seitenverhältnis des Bildes --><!-- target="_blank" hinzugefügt --><a href="radio.html" target="_blank" class="block mb-4 relative group"> <!-- 'relative group' für Positionierung des Play-Buttons und Hover-Effekt --><div class="w-full aspect-video relative overflow-hidden shadow-lg"> 
                     <!-- Bild oder Video-Vorschau --><img src="Images/week21.jpg" onerror="this.src='https://placehold.co/800x450/424242/ffffff?text=Aktuelles+Cover'" alt="Aktuelles Sendungscover" class="absolute inset-0 w-full h-full object-cover">
                     
                     <!-- PLAY-BUTTON OVERLAY --><div class="absolute inset-0 flex items-center justify-center 
@@ -171,7 +173,7 @@
                 Tauchen Sie ein in die funkigen Rhythmen des afrikanischen Disco-Revivals. Diesen Monat haben wir Temi Kogbe eingeladen, um eine Auswahl an seltenen 80er-Jahre-Jams aus Nigeria, Ghana und der Elfenbeinküste zu präsentieren. Pure Energie für die Tanzfläche!
             </p>
 
-            <!-- Direkt-Link zur Unterseite/Player (Button-Stil übernommen) --><a href="radio.html" class="inline-block accent-bg text-black font-bold py-3 px-6 shadow-md hover:accent-hover transition duration-200 uppercase text-sm tracking-wide">
+            <!-- Direkt-Link zur Unterseite/Player (Button-Stil übernommen) --><!-- target="_blank" hinzugefügt --><a href="radio.html" target="_blank" class="inline-block accent-bg text-black font-bold py-3 px-6 shadow-md hover:accent-hover transition duration-200 uppercase text-sm tracking-wide">
                 Jetzt reinhören
             </a>
 
@@ -192,6 +194,21 @@
         
         <!-- Der Copyright-Text wurde entfernt. --></footer>
     
+    <!-- MIXCLOUD PLAYBAR (FIXED BOTTOM) -->
+    <!-- Dieser Container sorgt dafür, dass der Player immer am unteren Rand des Browsers sichtbar ist. -->
+    <div id="mixcloud-playbar" class="fixed bottom-0 left-0 w-full z-50 shadow-2xl">
+        <!-- BITTE ERSETZEN SIE DIESEN PLATZHALTER DURCH IHREN ECHTEN MIXCLOUD IFRAME CODE -->
+        <iframe 
+            width="100%" 
+            height="120" 
+            src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Fmiggedy%2F" 
+            frameborder="0"
+            allow="autoplay"
+            title="Mixcloud Player">
+        </iframe>
+        <!-- ENDE PLATZHALTER -->
+    </div>
+
     <!-- 4. INSTAGRAM EMBED SCRIPT MUSS EINMAL PRO SEITE HINZUGEFÜGT WERDEN --><script async src="//www.instagram.com/embed.js"></script>
 
 </body>
