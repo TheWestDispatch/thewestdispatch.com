@@ -6,22 +6,22 @@
     <title>The West Dispatch Radio</title>
     <!-- Tailwind CSS CDN für schnelles, responsives Styling --><script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Font: Lato (Neutral, sauber, weniger rund) --><link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Google Font: Lato - Neutral, sauber, systemähnlich wie im 2000er UI-Design --><link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome für Icons (Social Media Logos) -->
+    <!-- Font Awesome für Icons (Social Media Logos & Player Controls) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         /* CSS für das Styling */
         body {
-            /* Schriftart auf Lato gesetzt */
+            /* Schriftart auf Lato gesetzt (Neutral, System-UI-ähnlich) */
             font-family: 'Lato', sans-serif; 
-            /* Hintergrundbild: Pfad wurde übernommen. */
+            /* Hintergrundbild: Pfad wurde beibehalten, aber bitte prüfen Sie, ob "Images/west dispatch cover background.png" der korrekte Pfad ist. */
             background-image: url('Images/west dispatch cover background.png');
-            background-size: cover; /* Bild deckt den gesamten Hintergrund ab */
-            background-position: center; /* Bild zentrieren */
-            background-attachment: fixed; /* Bild bleibt beim Scrollen fixiert */
-            color: #e2e8f0;
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed; 
+            color: #d0d0d0; /* Helles Grau für den Haupttext */
             min-height: 100vh;
         }
         /* Stellt sicher, dass das iFrame sich an den Container anpasst */
@@ -31,77 +31,185 @@
             margin-bottom: 24px;
         }
         iframe {
-            /* Ecken des iFrame wurden auf 8px belassen, für einen eingebetteten Player ist das oft erwünscht */
-            border-radius: 8px; 
+            /* iFrame Ecken bleiben leicht abgerundet */
+            border-radius: 6px; 
+            /* Helle Kante, um den Player abzuheben */
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); 
         }
-        /* Optional: Eine leichte Überlagerung, um den Text besser lesbar zu machen */
+        /* Überlagerung */
         .overlay {
-            background-color: rgba(0, 0, 0, 0.5); /* Dunkle, halbtransparente Überlagerung */
+            background-color: rgba(0, 0, 0, 0.65); /* Etwas dunklere Überlagerung */
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            z-index: -1; /* Hinter dem Inhalt */
+            z-index: -1; 
         }
 
-        /* NEUE KLASSE: Neon-Glow Effekt für die Hauptbox */
-        .neon-glow-box {
-            /* Der Haupt-Schatten */
+        /* KLASSE: iTunes 2008 Dark-Look */
+        .itunes-box-style {
+            background-color: #3A3A3A; /* Mittleres Dunkelgrau */
+            /* Skeuomorphismus: Sanfter, glänzender Look durch Box-Schatten */
             box-shadow: 
-                0 0 15px rgba(128, 255, 215, 0.5), /* Weicher innerer Glow (Türkis) */
-                0 0 30px rgba(128, 255, 215, 0.3), /* Größerer, diffuserer Glow */
-                0 10px 20px rgba(0, 0, 0, 0.8); /* Dunkler, nach unten gerichteter Schatten für Tiefe */
-            border: 1px solid rgba(128, 255, 215, 0.2); /* Dünne, helle Rahmenlinie */
+                inset 0 1px 0 rgba(255, 255, 255, 0.1), /* Heller Glanz oben (simuliert Plastik/Glas) */
+                0 4px 8px rgba(0, 0, 0, 0.5); /* Tiefer Schatten unten */
+            border: 1px solid #2a2a2a; /* Dunkler Rahmen */
+        }
+        
+        /* Spezieller Stil für den Header-Bereich */
+        .itunes-header-style {
+            background-color: #333333; /* Noch dunklerer Header-Bereich */
+            border-bottom: 1px solid #505050;
+        }
+
+        /* Akzentfarbe für Links/Icons (iTunes-Blau) */
+        .itunes-blue-accent {
+            color: #4A90E2; 
+        }
+        .itunes-blue-accent:hover {
+            color: #ADD8E6; /* Etwas heller beim Hover */
+        }
+        
+        /* Spezieller Stil für den Lautstärkeregler (für den Deko-Effekt) */
+        .volume-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 4px;
+            background: #4A90E2;
+            opacity: 0.7;
+            transition: opacity .2s;
+            border-radius: 2px;
+            cursor: default; /* Da er nur Deko ist */
+        }
+
+        /* Stil für den Schieberegler-Knopf */
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            background: white;
+            border: 1px solid #4A90E2;
+            border-radius: 50%;
+            /* Leichter Glanz-Effekt */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+
+        /* CSS FÜR DEN PROGRESS SLIDER */
+        .progress-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            background: #202020; /* Dunkle Spur */
+            opacity: 1;
+            border-radius: 3px;
+            cursor: default;
+            /* Subtiler innerer Schatten für 3D-Effekt */
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
+        }
+
+        .progress-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            background: #4A90E2; /* iTunes-Blau */
+            border: 1px solid #3069b3;
+            border-radius: 50%;
+            /* Glanz-Effekt */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            margin-top: -3px; /* Zentriert den Thumb auf der Spur */
         }
     </style>
 </head>
 <body class="flex flex-col items-center justify-center p-4 relative">
     <!-- Überlagerung für bessere Lesbarkeit --><div class="overlay"></div>
 
-    <!-- NEUER CONTAINER: Social Media Links (Nach oben verschoben, mit Logo links) -->
-    <div class="max-w-xl w-full bg-[#424242] bg-opacity-90 p-3 relative z-10 neon-glow-box mb-4">
+    <!-- HEADER/TITELLEISTE: Social Media Links (Dunkler, separater Stil) -->
+    <div class="max-w-xl w-full bg-[#333333] bg-opacity-90 p-3 relative z-10 itunes-header-style mb-4">
         <div class="flex justify-between items-center">
-            <!-- Text links in #ffa45e -->
-            <span class="text-[#ffa45e] font-bold text-lg tracking-widest">THE WEST DISPATCH</span>
+            <!-- Text links in reinem Weiß -->
+            <span class="text-white font-normal text-lg tracking-widest">THE WEST DISPATCH</span>
             
-            <!-- Icons rechts -->
-            <div class="flex space-x-6 text-[#80ffd7]">
+            <!-- Icons rechts mit blauem iTunes-Akzent -->
+            <div class="flex space-x-6 itunes-blue-accent">
                 <!-- YouTube -->
-                <a href="#" target="_blank" aria-label="YouTube" class="text-2xl hover:text-white transition duration-200">
+                <a href="#" target="_blank" aria-label="YouTube" class="text-2xl hover:text-white transition duration-200 itunes-blue-accent">
                     <i class="fab fa-youtube"></i>
                 </a>
                 <!-- Instagram -->
-                <a href="#" target="_blank" aria-label="Instagram" class="text-2xl hover:text-white transition duration-200">
+                <a href="#" target="_blank" aria-label="Instagram" class="text-2xl hover:text-white transition duration-200 itunes-blue-accent">
                     <i class="fab fa-instagram"></i>
                 </a>
                 <!-- TikTok -->
-                <a href="#" target="_blank" aria-label="TikTok" class="text-2xl hover:text-white transition duration-200">
+                <a href="#" target="_blank" aria-label="TikTok" class="text-2xl hover:text-white transition duration-200 itunes-blue-accent">
                     <i class="fab fa-tiktok"></i>
                 </a>
                 <!-- Facebook -->
-                <a href="#" target="_blank" aria-label="Facebook" class="text-2xl hover:text-white transition duration-200">
+                <a href="#" target="_blank" aria-label="Facebook" class="text-2xl hover:text-white transition duration-200 itunes-blue-accent">
                     <i class="fab fa-facebook-f"></i>
                 </a>
                 <!-- Mixcloud -->
-                <a href="#" target="_blank" aria-label="Mixcloud" class="text-2xl hover:text-white transition duration-200">
+                <a href="#" target="_blank" aria-label="Mixcloud" class="text-2xl hover:text-white transition duration-200 itunes-blue-accent">
                     <i class="fab fa-mixcloud"></i>
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- Hauptcontainer (Mixcloud Player) - Ecken sind jetzt spitz -->
-    <div class="max-w-xl w-full bg-[#424242] bg-opacity-90 p-8 relative z-10 neon-glow-box">
+    <!-- HAUPTCONTAINER (Mixcloud Player) - Skeuomorphischer Stil -->
+    <div class="max-w-xl w-full bg-[#3A3A3A] bg-opacity-90 p-8 relative z-10 itunes-box-style">
         
-        <!-- Logo -->
-        <img src="Images/west dispatch logo small_.png" alt="The West Dispatch Logo" class="w-48 h-auto mx-auto mb-1">
+        <!-- PLAYER-KONTROLLE (Deko) -->
+        <div class="mb-6 w-full">
+            
+            <!-- Fortschrittsleiste (Trackbar) -->
+            <div class="mb-3">
+                <input type="range" min="0" max="100" value="40" class="progress-slider" disabled>
+            </div>
+
+            <!-- Steuerelemente und Titel/Lautstärke -->
+            <div class="flex items-center justify-between">
+                
+                <!-- 1. Player Buttons (Links) -->
+                <div class="flex space-x-4">
+                    <!-- Rückspulen/Vorheriger Track -->
+                    <i class="fas fa-backward text-xl itunes-blue-accent opacity-70 cursor-default"></i>
+                    <!-- Play/Pause Button (Groß und prominent) -->
+                    <i class="fas fa-play-circle text-3xl itunes-blue-accent cursor-default shadow-lg"></i>
+                    <!-- Vorspulen/Nächster Track -->
+                    <i class="fas fa-forward text-xl itunes-blue-accent opacity-70 cursor-default"></i>
+                </div>
+                
+                <!-- 2. Laufender Track-Name (Mitte) -->
+                <div class="flex-grow text-center mx-4">
+                    <span class="text-white text-sm font-semibold whitespace-nowrap overflow-hidden block">The West Dispatch Radio</span>
+                </div>
+                
+                <!-- 3. Lautstärkeregler (Rechts) -->
+                <div class="flex items-center space-x-2 w-32 ml-8">
+                    <!-- Leiser Icon -->
+                    <i class="fas fa-volume-down text-xs text-gray-500 cursor-default"></i>
+                    <!-- Lautstärke-Slider -->
+                    <input type="range" min="0" max="100" value="70" class="volume-slider" disabled>
+                    <!-- Lauter Icon -->
+                    <i class="fas fa-volume-up text-xs text-gray-400 cursor-default"></i>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Logo (Pfad angepasst) -->
+        <img src="west dispatch logo small_.png" alt="The West Dispatch Logo" class="w-48 h-auto mx-auto mb-1 opacity-90">
         
-        <!-- Überschrift mit Farbe #80ffd7 -->
-        <h1 class="text-3xl font-bold mb-4 text-[#80ffd7] text-center uppercase">The West Dispatch Radio</h1>
+        <!-- Überschrift in Weiß/Hellgrau -->
+        <h1 class="text-2xl font-bold text-white text-center uppercase mb-1">The West Dispatch Radio</h1>
         
         <!-- Text unter der Überschrift -->
-        <p class="text-white text-lg mb-6 text-center">Ausgabe 23 - 23.11.25</p>
+        <p class="text-[#d0d0d0] text-lg mb-6 text-center">Ausgabe 23 - 23.11.25</p>
         
         <!-- Mixcloud Player mit dem gewünschten Stream -->
         <div class="mixcloud-embed-container">
@@ -115,20 +223,21 @@
         </div>
 
         <!-- Footer-Text -->
-        <p class="text-sm text-white mt-6 text-center">Viel Spaß beim Hören!</p>
+        <p class="text-sm text-[#d0d0d0] mt-6 text-center">Viel Spaß beim Hören!</p>
     </div>
 
-    <!-- CONTAINER: Tracklist - Ecken sind jetzt spitz -->
-    <div class="max-w-sm w-full bg-[#424242] bg-opacity-90 p-8 relative z-10 neon-glow-box mt-4">
+    <!-- CONTAINER: Tracklist - Skeuomorphischer Stil, Schmaler -->
+    <div class="max-w-sm w-full bg-[#3A3A3A] bg-opacity-90 p-8 relative z-10 itunes-box-style mt-4">
         
-        <h2 class="text-xl font-bold mb-4 text-[#80ffd7] text-center uppercase">Tracklist</h2>
+        <!-- Überschrift in Weiß/Hellgrau -->
+        <h2 class="text-xl font-bold mb-4 text-white text-center uppercase">Tracklist</h2>
         
         <!-- Beispiel Tracklist (bitte mit echten Daten ersetzen!) -->
-        <ul class="text-white text-sm space-y-2 list-none p-0">
-            <li class="border-b border-gray-600 pb-1">01. Osibisa - Coffee Song (7:30)</li>
-            <li class="border-b border-gray-600 pb-1">02. K. Frimpong - Hwe Hwe Mu Na Yi Wo Mpena (4:50)</li>
-            <li class="border-b border-gray-600 pb-1">03. The Lijadu Sisters - Come On Home (3:45)</li>
-            <li class="border-b border-gray-600 pb-1">04. William Onyeabor - Better Change Your Mind (6:12)</li>
+        <ul class="text-[#d0d0d0] text-sm space-y-2 list-none p-0">
+            <li class="border-b border-gray-700 pb-1">01. Osibisa - Coffee Song (7:30)</li>
+            <li class="border-b border-gray-700 pb-1">02. K. Frimpong - Hwe Hwe Mu Na Yi Wo Mpena (4:50)</li>
+            <li class="border-b border-gray-700 pb-1">03. The Lijadu Sisters - Come On Home (3:45)</li>
+            <li class="border-b border-gray-700 pb-1">04. William Onyeabor - Better Change Your Mind (6:12)</li>
             <li>05. Gyedu-Blay Ambolley - Simigwa (5:05)</li>
         </ul>
         
