@@ -6,13 +6,17 @@
     <title>The West Dispatch Radio</title>
     <!-- Tailwind CSS CDN für schnelles, responsives Styling --><script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Font: Poppins (Futura-ähnlich) --><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google Font: Lato (Neutral, sauber, weniger rund) --><link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome für Icons (Social Media Logos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         /* CSS für das Styling */
         body {
-            font-family: 'Poppins', sans-serif; 
-            /* Hintergrundbild: Pfad wurde übernommen und fehlendes Semikolon hinzugefügt. */
+            /* Schriftart auf Lato gesetzt */
+            font-family: 'Lato', sans-serif; 
+            /* Hintergrundbild: Pfad wurde übernommen. */
             background-image: url('Images/west dispatch cover background.png');
             background-size: cover; /* Bild deckt den gesamten Hintergrund ab */
             background-position: center; /* Bild zentrieren */
@@ -27,7 +31,8 @@
             margin-bottom: 24px;
         }
         iframe {
-            border-radius: 8px; /* Abgerundete Ecken für das iFrame */
+            /* Ecken des iFrame wurden auf 8px belassen, für einen eingebetteten Player ist das oft erwünscht */
+            border-radius: 8px; 
         }
         /* Optional: Eine leichte Überlagerung, um den Text besser lesbar zu machen */
         .overlay {
@@ -39,21 +44,63 @@
             bottom: 0;
             z-index: -1; /* Hinter dem Inhalt */
         }
+
+        /* NEUE KLASSE: Neon-Glow Effekt für die Hauptbox */
+        .neon-glow-box {
+            /* Der Haupt-Schatten */
+            box-shadow: 
+                0 0 15px rgba(128, 255, 215, 0.5), /* Weicher innerer Glow (Türkis) */
+                0 0 30px rgba(128, 255, 215, 0.3), /* Größerer, diffuserer Glow */
+                0 10px 20px rgba(0, 0, 0, 0.8); /* Dunkler, nach unten gerichteter Schatten für Tiefe */
+            border: 1px solid rgba(128, 255, 215, 0.2); /* Dünne, helle Rahmenlinie */
+        }
     </style>
 </head>
 <body class="flex flex-col items-center justify-center p-4 relative">
     <!-- Überlagerung für bessere Lesbarkeit --><div class="overlay"></div>
 
-    <!-- Hauptcontainer zentriert, begrenzt die Breite, jetzt mit benutzerdefiniertem Hintergrund #424242 -->
-    <div class="max-w-xl w-full bg-[#424242] bg-opacity-90 p-8 rounded-xl shadow-2xl relative z-10">
+    <!-- NEUER CONTAINER: Social Media Links (Nach oben verschoben, mit Logo links) -->
+    <div class="max-w-xl w-full bg-[#424242] bg-opacity-90 p-3 relative z-10 neon-glow-box mb-4">
+        <div class="flex justify-between items-center">
+            <!-- Text links in #ffa45e -->
+            <span class="text-[#ffa45e] font-bold text-lg tracking-widest">THE WEST DISPATCH</span>
+            
+            <!-- Icons rechts -->
+            <div class="flex space-x-6 text-[#80ffd7]">
+                <!-- YouTube -->
+                <a href="#" target="_blank" aria-label="YouTube" class="text-2xl hover:text-white transition duration-200">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <!-- Instagram -->
+                <a href="#" target="_blank" aria-label="Instagram" class="text-2xl hover:text-white transition duration-200">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <!-- TikTok -->
+                <a href="#" target="_blank" aria-label="TikTok" class="text-2xl hover:text-white transition duration-200">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <!-- Facebook -->
+                <a href="#" target="_blank" aria-label="Facebook" class="text-2xl hover:text-white transition duration-200">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <!-- Mixcloud -->
+                <a href="#" target="_blank" aria-label="Mixcloud" class="text-2xl hover:text-white transition duration-200">
+                    <i class="fab fa-mixcloud"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hauptcontainer (Mixcloud Player) - Ecken sind jetzt spitz -->
+    <div class="max-w-xl w-full bg-[#424242] bg-opacity-90 p-8 relative z-10 neon-glow-box">
         
-        <!-- Logo: Rand (mb-6) wurde auf (mb-3) reduziert, um Platz zu sparen -->
+        <!-- Logo -->
         <img src="Images/west dispatch logo small_.png" alt="The West Dispatch Logo" class="w-48 h-auto mx-auto mb-1">
         
         <!-- Überschrift mit Farbe #80ffd7 -->
         <h1 class="text-3xl font-bold mb-4 text-[#80ffd7] text-center uppercase">The West Dispatch Radio</h1>
         
-        <!-- Text unter der Überschrift: Farbe auf Weiß und Größe auf text-lg (etwas größer) gesetzt -->
+        <!-- Text unter der Überschrift -->
         <p class="text-white text-lg mb-6 text-center">Ausgabe 23 - 23.11.25</p>
         
         <!-- Mixcloud Player mit dem gewünschten Stream -->
@@ -67,8 +114,24 @@
             </iframe>
         </div>
 
-        <!-- Footer-Text: Farbe auf Weiß geändert -->
+        <!-- Footer-Text -->
         <p class="text-sm text-white mt-6 text-center">Viel Spaß beim Hören!</p>
+    </div>
+
+    <!-- CONTAINER: Tracklist - Ecken sind jetzt spitz -->
+    <div class="max-w-sm w-full bg-[#424242] bg-opacity-90 p-8 relative z-10 neon-glow-box mt-4">
+        
+        <h2 class="text-xl font-bold mb-4 text-[#80ffd7] text-center uppercase">Tracklist</h2>
+        
+        <!-- Beispiel Tracklist (bitte mit echten Daten ersetzen!) -->
+        <ul class="text-white text-sm space-y-2 list-none p-0">
+            <li class="border-b border-gray-600 pb-1">01. Osibisa - Coffee Song (7:30)</li>
+            <li class="border-b border-gray-600 pb-1">02. K. Frimpong - Hwe Hwe Mu Na Yi Wo Mpena (4:50)</li>
+            <li class="border-b border-gray-600 pb-1">03. The Lijadu Sisters - Come On Home (3:45)</li>
+            <li class="border-b border-gray-600 pb-1">04. William Onyeabor - Better Change Your Mind (6:12)</li>
+            <li>05. Gyedu-Blay Ambolley - Simigwa (5:05)</li>
+        </ul>
+        
     </div>
 
 </body>
