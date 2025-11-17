@@ -1,17 +1,75 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
-    <title>The West Dispatch</title>
-</head>
-
-
-<body>
-<h1 style="text-align: center;">
-    THE WEST DISPATCH RADIO
-</h1>
-
-    <iframe width="100%" height="400" src="https://player-widget.mixcloud.com/widget/iframe/?feed=%2FNTSRadio%2Fthe-great-african-disco-w-temi-kogbe-80s-jams-9th-november-2025%2F" frameborder="0" allow="encrypted-media; fullscreen; autoplay; idle-detection; speaker-selection; web-share;" ></iframe>
-</body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The West Dispatch Radio</title>
+    <!-- Tailwind CSS CDN für schnelles, responsives Styling --><script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Google Font: Poppins (Futura-ähnlich) --><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS für das Styling */
+        body {
+            font-family: 'Poppins', sans-serif; 
+            /* Hintergrundbild: Pfad wurde übernommen und fehlendes Semikolon hinzugefügt. */
+            background-image: url('Images/west dispatch cover background.png');
+            background-size: cover; /* Bild deckt den gesamten Hintergrund ab */
+            background-position: center; /* Bild zentrieren */
+            background-attachment: fixed; /* Bild bleibt beim Scrollen fixiert */
+            color: #e2e8f0;
+            min-height: 100vh;
+        }
+        /* Stellt sicher, dass das iFrame sich an den Container anpasst */
+        .mixcloud-embed-container {
+            width: 100%;
+            max-height: 120px; 
+            margin-bottom: 24px;
+        }
+        iframe {
+            border-radius: 8px; /* Abgerundete Ecken für das iFrame */
+        }
+        /* Optional: Eine leichte Überlagerung, um den Text besser lesbar zu machen */
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.5); /* Dunkle, halbtransparente Überlagerung */
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1; /* Hinter dem Inhalt */
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center p-4 relative">
+    <!-- Überlagerung für bessere Lesbarkeit --><div class="overlay"></div>
+
+    <!-- Hauptcontainer zentriert, begrenzt die Breite, jetzt mit benutzerdefiniertem Hintergrund #424242 -->
+    <div class="max-w-xl w-full bg-[#424242] bg-opacity-90 p-8 rounded-xl shadow-2xl relative z-10">
+        
+        <!-- Logo: Rand (mb-6) wurde auf (mb-3) reduziert, um Platz zu sparen -->
+        <img src="Images/west dispatch logo small_.png" alt="The West Dispatch Logo" class="w-48 h-auto mx-auto mb-1">
+        
+        <!-- Überschrift mit Farbe #80ffd7 -->
+        <h1 class="text-3xl font-bold mb-4 text-[#80ffd7] text-center uppercase">The West Dispatch Radio</h1>
+        
+        <!-- Text unter der Überschrift: Farbe auf Weiß und Größe auf text-lg (etwas größer) gesetzt -->
+        <p class="text-white text-lg mb-6 text-center">Ausgabe 23 - 23.11.25</p>
+        
+        <!-- Mixcloud Player mit dem gewünschten Stream -->
+        <div class="mixcloud-embed-container">
+            <iframe 
+                width="100%" 
+                height="120" 
+                src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=%2FNTSRadio%2Fthe-great-african-disco-w-temi-kogbe-80s-jams-9th-november-2025%2F" 
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- Footer-Text: Farbe auf Weiß geändert -->
+        <p class="text-sm text-white mt-6 text-center">Viel Spaß beim Hören!</p>
+    </div>
+
+</body>
 </html>
