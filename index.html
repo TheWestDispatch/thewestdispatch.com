@@ -87,8 +87,11 @@
     <!-- Hauptcontainer (Mixcloud Player) - Ecken sind jetzt spitz -->
     <div class="max-w-xl w-full bg-[#424242] bg-opacity-90 p-8 relative z-10">
         
-        <!-- Logo -->
-        <img src="Images/west dispatch logo small_.png" alt="The West Dispatch Logo" class="w-48 h-auto mx-auto mb-1">
+        <!-- NEU: Wrapper für quadratisches (1:1) Seitenverhältnis des Bildes -->
+        <div class="w-full aspect-square relative mb-4">
+            <!-- Cover Bild: Pfad auf "Images/week21.jpg" geändert -->
+            <img src="Images/week21.jpg" alt="Cover Bild" class="absolute inset-0 w-full h-full object-cover">
+        </div>
         
         <!-- Überschrift mit Farbe #80ffd7 -->
         <h1 class="text-3xl font-bold mb-4 text-[#80ffd7] text-center uppercase">The West Dispatch Radio</h1>
