@@ -8,8 +8,7 @@
     
     <!-- Google Font: Lato (Neutral, sauber, weniger rund) --><link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome für Icons (Social Media Logos) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Font Awesome für Icons (Social Media Logos) --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         /* CSS für das Styling */
@@ -45,62 +44,47 @@
             z-index: -1; /* Hinter dem Inhalt */
         }
         
-        /* Die Neon-Glow-Klasse wurde entfernt */
-
     </style>
 </head>
-<body class="flex flex-col items-center justify-center p-4 relative">
+<!-- 'justify-center' entfernt und 'py-10' für Puffer oben/unten hinzugefügt --><body class="flex flex-col items-center p-4 py-10 relative">
     <!-- Überlagerung für bessere Lesbarkeit --><div class="overlay"></div>
 
-    <!-- NEUER CONTAINER: Social Media Links (Nach oben verschoben, mit Logo links) -->
-    <div class="max-w-xl w-full bg-[#424242] bg-opacity-90 p-3 relative z-10 mb-4">
+
+    <!-- 1. CONTAINER: Social Media Links (Header-Leiste) - Ecken spitz --><div class="max-w-xl w-full bg-[#424242] bg-opacity-90 p-3 relative z-10 mb-4 shadow-xl">
         <div class="flex justify-between items-center">
-            <!-- Text links in #ffa45e -->
-            <span class="text-[#ffa45e] font-bold text-lg tracking-widest">THE WEST DISPATCH</span>
+            <!-- Text links in #ffa45e --><span class="text-[#ffa45e] font-bold text-lg tracking-widest">THE WEST DISPATCH</span>
             
-            <!-- Icons rechts -->
-            <div class="flex space-x-6 text-[#80ffd7]">
-                <!-- YouTube -->
-                <a href="#" target="_blank" aria-label="YouTube" class="text-2xl hover:text-white transition duration-200">
+            <!-- Icons rechts --><div class="flex space-x-6 text-[#80ffd7]">
+                <!-- YouTube --><a href="https://www.youtube.com/@TheWestDispatch" target="_blank" aria-label="YouTube" class="text-2xl hover:text-white transition duration-200">
                     <i class="fab fa-youtube"></i>
                 </a>
-                <!-- Instagram -->
-                <a href="#" target="_blank" aria-label="Instagram" class="text-2xl hover:text-white transition duration-200">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <!-- TikTok -->
-                <a href="#" target="_blank" aria-label="TikTok" class="text-2xl hover:text-white transition duration-200">
+                <!-- TikTok --><a href="https://www.tiktok.com/@thewestdispatch" target="_blank" aria-label="TikTok" class="text-2xl hover:text-white transition duration-200">
                     <i class="fab fa-tiktok"></i>
                 </a>
-                <!-- Facebook -->
-                <a href="#" target="_blank" aria-label="Facebook" class="text-2xl hover:text-white transition duration-200">
+                <!-- Instagram --><a href="https://www.instagram.com/thewestdispatch/" target="_blank" aria-label="Instagram" class="text-2xl hover:text-white transition duration-200">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <!-- Facebook --><a href="https://www.facebook.com/profile.php?id=61582519846250" target="_blank" aria-label="Facebook" class="text-2xl hover:text-white transition duration-200">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <!-- Mixcloud -->
-                <a href="#" target="_blank" aria-label="Mixcloud" class="text-2xl hover:text-white transition duration-200">
+                <!-- Mixcloud --><a href="https://www.mixcloud.com/TheWestDispatch/" target="_blank" aria-label="Mixcloud" class="text-2xl hover:text-white transition duration-200">
                     <i class="fab fa-mixcloud"></i>
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- Hauptcontainer (Mixcloud Player) - Ecken sind jetzt spitz -->
-    <div class="max-w-xl w-full bg-[#424242] bg-opacity-90 p-8 relative z-10">
+    <!-- 2. CONTAINER: Hauptcontainer (Player und Infos) - Ecken spitz --><div class="max-w-xl w-full bg-[#424242] bg-opacity-90 p-8 relative z-10 shadow-xl">
         
-        <!-- NEU: Wrapper für quadratisches (1:1) Seitenverhältnis des Bildes -->
-        <div class="w-full aspect-square relative mb-4">
-            <!-- Cover Bild: Pfad auf "Images/week21.jpg" geändert -->
-            <img src="Images/week21.jpg" alt="Cover Bild" class="absolute inset-0 w-full h-full object-cover">
+        <!-- NEU: Wrapper für quadratisches (1:1) Seitenverhältnis des Bildes --><div class="w-full aspect-square relative mb-4">
+            <!-- Cover Bild: Pfad auf "Images/week21.jpg" geändert --><img src="Images/week21.jpg" alt="Cover Bild" class="absolute inset-0 w-full h-full object-cover">
         </div>
         
-        <!-- Überschrift mit Farbe #80ffd7 -->
-        <h1 class="text-3xl font-bold mb-4 text-[#80ffd7] text-center uppercase">The West Dispatch Radio</h1>
+        <!-- Überschrift mit Farbe #80ffd7 --><h1 class="text-3xl font-bold mb-4 text-[#80ffd7] text-center uppercase">The West Dispatch Radio</h1>
         
-        <!-- Text unter der Überschrift -->
-        <p class="text-white text-lg mb-6 text-center">Ausgabe 23 - 23.11.25</p>
+        <!-- Text unter der Überschrift --><p class="text-white text-lg mb-6 text-center">Ausgabe 23 - 23.11.25</p>
         
-        <!-- Mixcloud Player mit dem gewünschten Stream -->
-        <div class="mixcloud-embed-container">
+        <!-- Mixcloud Player mit dem gewünschten Stream --><div class="mixcloud-embed-container">
             <iframe 
                 width="100%" 
                 height="120" 
@@ -110,16 +94,13 @@
             </iframe>
         </div>
 
-        <!-- Der Footer-Text "Viel Spaß beim Hören!" wurde entfernt -->
-    </div>
+        <!-- Der Footer-Text "Viel Spaß beim Hören!" wurde entfernt --></div>
 
-    <!-- CONTAINER: Tracklist - Ecken sind jetzt spitz -->
-    <div class="max-w-sm w-full bg-[#424242] bg-opacity-90 p-8 relative z-10 mt-4">
+    <!-- 3. CONTAINER: Tracklist - Ecken spitz --><div class="max-w-sm w-full bg-[#424242] bg-opacity-90 p-8 relative z-10 mt-4 shadow-xl">
         
         <h2 class="text-xl font-bold mb-4 text-[#80ffd7] text-center uppercase">Tracklist</h2>
         
-        <!-- Beispiel Tracklist (bitte mit echten Daten ersetzen!) -->
-        <ul class="text-white text-sm space-y-2 list-none p-0">
+        <!-- Beispiel Tracklist (bitte mit echten Daten ersetzen!) --><ul class="text-white text-sm space-y-2 list-none p-0">
             <li class="border-b border-gray-600 pb-1">01. Osibisa - Coffee Song (7:30)</li>
             <li class="border-b border-gray-600 pb-1">02. K. Frimpong - Hwe Hwe Mu Na Yi Wo Mpena (4:50)</li>
             <li class="border-b border-gray-600 pb-1">03. The Lijadu Sisters - Come On Home (3:45)</li>
@@ -127,6 +108,12 @@
             <li>05. Gyedu-Blay Ambolley - Simigwa (5:05)</li>
         </ul>
         
+    </div>
+
+    <!-- 4. BUTTON: Mehr Dispatch (ohne Box) - Ecken spitz --><div class="max-w-xl w-full mt-4 flex justify-center z-10">
+        <!-- Button mit Akzentfarbe #ffa45e und spitzem Design --><a href="index.html" class="bg-[#ffa45e] text-black font-bold py-3 px-6 shadow-md hover:bg-[#80ffd7] transition duration-200 uppercase text-sm tracking-wide">
+            Mehr The West Dispatch
+        </a>
     </div>
 
 </body>
