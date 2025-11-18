@@ -29,7 +29,7 @@
         .mixcloud-embed-container {
             width: 100%;
             /* Höhe des Mixcloud-Players */
-            max-height: 120px; 
+            max-height: 160px; 
             margin-bottom: 24px;
         }
         iframe {
@@ -72,6 +72,52 @@
             cursor: default;
         }
         
+        /* Spezifische Social Media Icon Farben */
+        .yt-icon { color: #FF0000; }
+        .tiktok-icon { color: #FFFFFF; }
+        .insta-icon { color: #E1306C; }
+        .fb-icon { color: #1877F2; }
+
+        /* NEU: Button-Farben (Markenfarben) */
+        .btn-yt { background-color: #FF0000; color: #FFFFFF; }
+        .btn-yt:hover { background-color: #CC0000; }
+        .btn-tiktok { background-color: #FFFFFF; color: #000000; }
+        .btn-tiktok:hover { background-color: #CCCCCC; }
+        .btn-insta { background-color: #E1306C; color: #FFFFFF; }
+        .btn-insta:hover { background-color: #C12A5E; }
+        .btn-fb { background-color: #1877F2; color: #FFFFFF; }
+        .btn-fb:hover { background-color: #1461C4; }
+
+         /* NEU: Anpassung für Social Media Boxen, um quadratisch zu wirken und zentriert zu sein */
+        .social-box {
+            padding: 2.5rem; /* etwas weniger Padding, um kompakter zu sein */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between; /* Icon oben, Button unten */
+            /* Min-Höhe, um eine quadratische Form auf gängigen Breiten zu simulieren */
+            min-height: 200px; 
+        }
+        @media (min-width: 1024px) {
+            .social-box {
+                /* Auf Desktops die Höhe leicht erhöhen für eine bessere quadratische Optik */
+                min-height: 250px; 
+            }
+        }
+
+         /* Standard-Container-Stil für die Boxen - border-radius auf 0 gesetzt */
+        .content-box {
+            background-color: #424242;
+            background-color: rgba(66, 66, 66, 0.95);
+            padding: 2rem;
+            border-radius: 0; /* Ecken spitz gemacht */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .content-box:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+        }
+
     </style>
 </head>
 
@@ -179,10 +225,12 @@
                     artist: "Ausgabe 23 - 23.11.25", 
                     album: 'Mixcloud Stream',
                     artwork: [
+                        // Wichtig: Pfad muss korrekt sein, um auf mobilen Geräten angezeigt zu werden
                         { src: 'Images/week21.jpg', sizes: '512x512', type: 'image/jpeg' } 
                     ]
                 });
 
+                // Setzt die Action Handler (diese sind nur deko, da der Player ein iframe ist)
                 navigator.mediaSession.setActionHandler('play', () => {
                     console.log('Media Session: Play pressed');
                 });
@@ -190,6 +238,7 @@
                     console.log('Media Session: Pause pressed');
                 });
                 
+                // Setzt den Zustand auf "playing", damit die Metadaten angezeigt werden
                 navigator.mediaSession.playbackState = 'playing'; 
             }
             
@@ -200,10 +249,6 @@
     
     <!-- Überlagerung für bessere Lesbarkeit --><div class="overlay"></div>
 
-    <!-- 0. CONTAINER: LEERE KOPFZEILE (Grau) - Spitze Ecken und Schatten -->
-    <div class="max-w-xl w-full bg-gray-700 bg-opacity-90 h-10 relative z-10 mb-4 shadow-xl">
-        <!-- Dieser Container ist nur für die visuelle Trennung und bleibt leer -->
-    </div>
 
     <!-- 1. CONTAINER: Social Media Links (Header-Leiste) - Spitze Ecken und Schatten -->
     <div class="max-w-xl w-full bg-[#424242] bg-opacity-90 p-3 relative z-10 mb-4 shadow-xl">
@@ -214,35 +259,35 @@
             <!-- Icons rechts -->
             <div class="flex space-x-6 text-[#80ffd7]">
                 <!-- YouTube -->
-                <a href="#" target="_blank" aria-label="YouTube" class="text-2xl hover:text-white transition duration-200">
+                <a href="https://www.youtube.com/@TheWestDispatch" target="_blank" aria-label="YouTube" class="text-2xl hover:text-white transition duration-200">
                     <i class="fab fa-youtube"></i>
                 </a>
                 <!-- Instagram -->
-                <a href="#" target="_blank" aria-label="Instagram" class="text-2xl hover:text-white transition duration-200">
+                <a href="https://www.tiktok.com/@thewestdispatch" target="_blank" aria-label="Instagram" class="text-2xl hover:text-white transition duration-200">
                     <i class="fab fa-instagram"></i>
                 </a>
                 <!-- TikTok -->
-                <a href="#" target="_blank" aria-label="TikTok" class="text-2xl hover:text-white transition duration-200">
+                <a href="https://www.instagram.com/thewestdispatch" target="_blank" aria-label="TikTok" class="text-2xl hover:text-white transition duration-200">
                     <i class="fab fa-tiktok"></i>
                 </a>
                 <!-- Facebook -->
-                <a href="#" target="_blank" aria-label="Facebook" class="text-2xl hover:text-white transition duration-200">
+                <a href="https://www.facebook.com/profile.php?id=61582519846250" target="_blank" aria-label="Facebook" class="text-2xl hover:text-white transition duration-200">
                     <i class="fab fa-facebook-f"></i>
                 </a>
                 <!-- Mixcloud -->
-                <a href="#" target="_blank" aria-label="Mixcloud" class="text-2xl hover:text-white transition duration-200">
+                <a href="https://www.mixcloud.com/TheWestDispatch/" target="_blank" aria-label="Mixcloud" class="text-2xl hover:text-white transition duration-200">
                     <i class="fab fa-mixcloud"></i>
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- 2. CONTAINER: Hauptcontainer (Player und Infos) - Spitze Ecken und Schatten -->
+    <!-- 2. CONTAINER: Hauptcontainer (Infos und Stream-Button) - Spitze Ecken und Schatten -->
     <div class="max-w-xl w-full bg-[#424242] bg-opacity-90 p-8 relative z-10 shadow-xl">
         
         <!-- NEU: Wrapper für quadratisches (1:1) Seitenverhältnis des Bildes -->
         <div class="w-full aspect-square relative mb-4">
-            <!-- Cover Bild: Pfad auf "Images/week21.jpg" geändert -->
+            <!-- Cover Bild: Pfad auf "Images/week21.jpg" gesetzt -->
             <img src="Images/week21.jpg" alt="Cover Bild" class="absolute inset-0 w-full h-full object-cover">
         </div>
         
@@ -250,12 +295,19 @@
         <h1 class="text-3xl font-bold mb-4 text-[#80ffd7] text-center uppercase">The West Dispatch Radio</h1>
         
         <!-- Text unter der Überschrift -->
-        <p class="text-white text-lg mb-6 text-center">Ausgabe 23 - 23.11.25</p>
+        <p class="text-white text-lg mb-2 text-center">Ausgabe 23 - 23.11.25</p>
+
+        <!-- NEU: Beschreibung des Inhalts -->
+        <p class="text-sm text-white-400 text-center mb-6 leading-relaxed">
+            Dieses mal mit dem neuen, fantastischen Album von Rosalia - Danny Brown ist auch zurück mit “Stardust” - wir hören etwas aus dem sehr interessanten Soundtrack TAKKUKK von BICEP und vielen mehr!
+        </p>
         
-        <!-- Mixcloud Player mit dem gewünschten Stream -->
-         
-        <div class="mixcloud-embed-container">
-           <iframe width="100%" height="120" src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=%2Fbigkinglow%2F" frameborder="0" allow="encrypted-media; fullscreen; autoplay; idle-detection; speaker-selection; web-share;" ></iframe>
+        <!-- NEUER BUTTON: Auf Mixcloud streamen (grün-blau) -->
+        <div class="flex justify-center mt-6">
+            <a href="https://www.mixcloud.com" target="_blank" class="flex items-center space-x-3 bg-[#80ffd7] text-black font-bold py-3 px-8 shadow-md hover:bg-[#a6fff0] transition duration-200 uppercase text-lg tracking-wider">
+                <i class="fas fa-play"></i>
+                <span>Auf Mixcloud Streamen</span>
+            </a>
         </div>
 
     </div>
@@ -272,15 +324,37 @@
         
     </div>
 
-    
+    <br><br><br>
 
-    <!-- 4. BUTTON: Mehr Dispatch (ohne Box) -->
-    <div class="max-w-xl w-full mt-4 flex justify-center z-10">
-        <!-- Button mit Akzentfarbe #ffa45e, spitzen Ecken und öffnet Link im neuen Tab -->
-        <a href="index.html" target="_blank" class="bg-[#ffa45e] text-black font-bold py-3 px-6 shadow-md hover:bg-[#ffc196] transition duration-200 uppercase text-sm tracking-wide">
-            Noch mehr The West Dispatch
-        </a>
-    </div>
+    <!-- NEUER ABSCHNITT: Social Media Promotions (4 Boxen nebeneinander) --><section class="max-w-4xl w-full relative z-10 mb-6">
+        <!-- Das Grid wurde von md:grid-cols-3 auf lg:grid-cols-4 umgestellt, um 4 Boxen nebeneinander zu ermöglichen --><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- Box 1: YouTube --><!-- Klasse social-box für das quadratische Design und vertikale Ausrichtung hinzugefügt --><div class="content-box social-box">
+                <i class="fab fa-youtube text-7xl yt-icon mb-auto mt-auto"></i> <!-- Icon Größe vergrößert --><!-- Button mit yt-Farben --><a href="https://www.youtube.com/@TheWestDispatch" target="_blank" class="inline-block btn-yt font-bold py-3 px-6 shadow-md transition duration-200 uppercase text-sm tracking-wide mt-6">
+                    YouTube
+                </a>
+            </div>
+
+            <!-- Box 2: TikTok --><!-- Klasse social-box für das quadratische Design und vertikale Ausrichtung hinzugefügt --><div class="content-box social-box">
+                <i class="fab fa-tiktok text-7xl tiktok-icon mb-auto mt-auto"></i> <!-- Icon Größe vergrößert --><!-- Button mit tiktok-Farben --><a href="https://www.tiktok.com/@thewestdispatch" target="_blank" class="inline-block btn-tiktok font-bold py-3 px-6 shadow-md transition duration-200 uppercase text-sm tracking-wide mt-6">
+                    TikTok
+                </a>
+            </div>
+
+            <!-- Box 3: Instagram --><!-- Klasse social-box für das quadratische Design und vertikale Ausrichtung hinzugefügt --><div class="content-box social-box">
+                <i class="fab fa-instagram text-7xl insta-icon mb-auto mt-auto"></i> <!-- Icon Größe vergrößert --><!-- Button mit insta-Farben --><a href="https://www.instagram.com/thewestdispatch/" target="_blank" class="inline-block btn-insta font-bold py-3 px-6 shadow-md transition duration-200 uppercase text-sm tracking-wide mt-6">
+                    Instagram
+                </a>
+            </div>
+
+            <!-- Box 4: Facebook --><!-- Klasse social-box für das quadratische Design und vertikale Ausrichtung hinzugefügt --><div class="content-box social-box">
+                <i class="fab fa-facebook-f text-7xl fb-icon mb-auto mt-auto"></i> <!-- Icon Größe vergrößert --><!-- Button mit fb-Farben --><a href="https://www.facebook.com/profile.php?id=61582519846250" target="_blank" class="inline-block btn-fb font-bold py-3 px-6 shadow-md transition duration-200 uppercase text-sm tracking-wide mt-6">
+                    Facebook
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- ENDE: Social Media Promot
 
 </body>
 </html>
