@@ -3,66 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The West Dispatch</title>
+    <title>The West Dispatch Radio</title>
+    
     <!-- Tailwind CSS CDN für schnelles, responsives Styling --><script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Font: Lato --><link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <!-- Google Font: Lato (Neutral, sauber, weniger rund) --><link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome für Icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Font Awesome für Icons (Social Media Logos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         /* CSS für das Styling */
         body {
             /* Schriftart auf Lato gesetzt */
             font-family: 'Lato', sans-serif; 
-            /* Hintergrundbild: Pfad und Stil von der Unterseite übernommen */
+            /* Hintergrundbild: Pfad wurde übernommen. */
             background-image: url('Images/west dispatch cover background.png');
-            background-size: cover; 
-            background-position: center; 
-            background-attachment: fixed; 
+            background-size: cover; /* Bild deckt den gesamten Hintergrund ab */
+            background-position: center; /* Bild zentrieren */
+            background-attachment: fixed; /* Bild bleibt beim Scrollen fixiert */
             color: #e2e8f0;
             min-height: 100vh;
-            /* Zusätzlicher Padding am Boden, um Platz für die feste Mixcloud-Player-Leiste zu schaffen */
-            padding-bottom: 120px; /* Höhe der Mixcloud-Leiste ist typischerweise 120px */
         }
-        /* Überlagerung für bessere Lesbarkeit */
+        /* Stellt sicher, dass das iFrame sich an den Container anpasst */
+        .mixcloud-embed-container {
+            width: 100%;
+            /* Höhe des Mixcloud-Players */
+            max-height: 160px; 
+            margin-bottom: 24px;
+        }
+        iframe {
+            /* Ecken des iFrame wurden auf 8px belassen, für einen eingebetteten Player ist das oft erwünscht */
+            border-radius: 8px; 
+        }
+        /* Optional: Eine leichte Überlagerung, um den Text besser lesbar zu machen */
         .overlay {
-            background-color: rgba(0, 0, 0, 0.6); /* Etwas dunkler, um den Hauptinhalt hervorzuheben */
+            background-color: rgba(0, 0, 0, 0.5); /* Dunkle, halbtransparente Überlagerung */
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            z-index: -1; 
+            z-index: -1; /* Hinter dem Inhalt */
         }
-        /* Standard-Container-Stil für die Boxen - border-radius auf 0 gesetzt */
-        .content-box {
-            background-color: #424242;
-            background-color: rgba(66, 66, 66, 0.95);
-            padding: 2rem;
-            border-radius: 0; /* Ecken spitz gemacht */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .content-box:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+        /* CSS für das Kopieren-Icon, um sicherzustellen, dass es klickbar ist */
+        .copy-button {
+            cursor: pointer;
+            flex-shrink: 0; /* Verhindert, dass der Button schrumpft */
+            margin-left: 1rem;
         }
 
-        /* Hero-Bereich (optional) - border-radius auf 0 gesetzt */
-        .hero-banner {
-            background-color: #ffa45e;
-            color: #000;
-            padding: 2rem 0;
-            text-align: center;
-            margin-bottom: 2rem;
-            border-radius: 0; /* Ecken spitz gemacht */
+        /* Styling für die Lautstärkeslider (Skeuomorph, optional) */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            background: #4A90E2; /* Blauer Track */
+            border-radius: 4px;
+            cursor: default;
         }
-
-        /* Akzentfarben */
-        .accent-text { color: #80ffd7; }
-        .accent-bg { background-color: #ffa45e; }
-        .accent-hover:hover { background-color: #ffc196; }
-
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+            cursor: default;
+        }
+        
         /* Spezifische Social Media Icon Farben */
         .yt-icon { color: #FF0000; }
         .tiktok-icon { color: #FFFFFF; }
@@ -79,7 +88,7 @@
         .btn-fb { background-color: #1877F2; color: #FFFFFF; }
         .btn-fb:hover { background-color: #1461C4; }
 
-        /* NEU: Anpassung für Social Media Boxen, um quadratisch zu wirken und zentriert zu sein */
+         /* NEU: Anpassung für Social Media Boxen, um quadratisch zu wirken und zentriert zu sein */
         .social-box {
             padding: 2.5rem; /* etwas weniger Padding, um kompakter zu sein */
             display: flex;
@@ -95,30 +104,228 @@
                 min-height: 250px; 
             }
         }
+
+         /* Standard-Container-Stil für die Boxen - border-radius auf 0 gesetzt */
+        .content-box {
+            background-color: #424242;
+            background-color: rgba(66, 66, 66, 0.95);
+            padding: 2rem;
+            border-radius: 0; /* Ecken spitz gemacht */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .content-box:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+        }
+
     </style>
 </head>
-<body class="flex flex-col items-center p-4 py-8 relative">
+
+<body class="flex flex-col items-center p-4 py-10 relative">
+    <!-- Funktion zum Kopieren in die Zwischenablage -->
+    <script>
+        // Funktion zum Kopieren von Text in die Zwischenablage
+        function copyToClipboard(text, buttonElement) {
+            try {
+                // Führt den Kopierbefehl aus
+                const tempInput = document.createElement('textarea');
+                tempInput.value = text;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                // document.execCommand('copy') ist notwendig, da navigator.clipboard im iFrame eingeschränkt sein kann
+                document.execCommand('copy'); 
+                document.body.removeChild(tempInput);
+
+                // Bestätigungsmeldung anzeigen (anstelle von alert)
+                showCopyMessage(buttonElement);
+            } catch (err) {
+                console.error('Fehler beim Kopieren:', err);
+            }
+        }
+
+        // Funktion zur Anzeige einer kurzen "Kopiert!"-Meldung neben dem Button
+        function showCopyMessage(buttonElement) {
+            const message = document.createElement('span');
+            message.textContent = "Kopiert!";
+            message.className = 'text-xs text-green-400 absolute transition-opacity duration-700 opacity-100';
+            
+            // Positionierung relativ zum Button (rechts)
+            const rect = buttonElement.getBoundingClientRect();
+            message.style.top = `${rect.top}px`;
+            message.style.left = `${rect.right + 5}px`;
+            
+            document.body.appendChild(message);
+
+            // Meldung nach 1 Sekunde ausblenden und entfernen
+            setTimeout(() => {
+                message.style.opacity = '0';
+                message.style.transition = 'opacity 0.7s';
+                setTimeout(() => {
+                    message.remove();
+                }, 700);
+            }, 1000);
+        }
+
+        // NEUE FUNKTIONALITÄT: Lädt die Tracks aus der Textdatei und erstellt die Liste
+        async function loadTracklist() {
+            const container = document.getElementById('tracklist-container');
+            if (!container) return;
+
+            try {
+                // Versucht, die Tracklist-Datei zu laden
+                const response = await fetch('tracklist.txt');
+                if (!response.ok) {
+                    throw new Error(`Konnte tracklist.txt nicht laden: ${response.statusText}`);
+                }
+                const text = await response.text();
+                
+                // Text in einzelne Zeilen (Tracks) aufteilen
+                const tracks = text.split('\n').filter(line => line.trim() !== '');
+                
+                let htmlContent = '';
+                
+                tracks.forEach((trackLine, index) => {
+                    // Extrahieren des Titels (alles nach der ersten Nummer und Punkt), um es zu kopieren
+                    const match = trackLine.match(/^(\d+\.|\d+\.\s)?(.+)/);
+                    const trackToCopy = match ? match[2].trim().replace(/\s\(\d+:\d+\)$/, '') : trackLine.trim(); // Entfernt Zeitangabe beim Kopieren
+
+                    // Bestimmt die Klasse für die Trennlinie
+                    const isLast = index === tracks.length - 1;
+                    const borderClass = isLast ? '' : 'border-b border-gray-600 pb-1';
+
+                    // Generiert das HTML für den Listeneintrag
+                    htmlContent += `
+                        <li class="flex justify-between items-center ${borderClass}">
+                            <span data-track-full="${trackLine}" class="truncate">${trackLine}</span>
+                            <button 
+                                onclick="copyToClipboard(this.getAttribute('data-track'), this)"
+                                data-track="${trackToCopy}"
+                                class="copy-button text-[#80ffd7] hover:text-white transition duration-200 text-base"
+                                aria-label="Titel kopieren">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </li>
+                    `;
+                });
+                
+                container.innerHTML = htmlContent;
+
+            } catch (error) {
+                console.error("Fehler beim Laden der Tracklist:", error);
+                container.innerHTML = `<li class="text-red-400">Tracklist konnte nicht geladen werden.</li>`;
+            }
+        }
+        
+        // Initialisierungsfunktion, die beim Laden des Fensters ausgeführt wird
+        window.onload = function() {
+            // Media Session API für Lockscreen-Anzeige
+            if ('mediaSession' in navigator) {
+                navigator.mediaSession.metadata = new MediaMetadata({
+                    title: "The West Dispatch Radio", 
+                    artist: "Ausgabe 23 - 23.11.25", 
+                    album: 'Mixcloud Stream',
+                    artwork: [
+                        // Wichtig: Pfad muss korrekt sein, um auf mobilen Geräten angezeigt zu werden
+                        { src: 'Images/week21.jpg', sizes: '512x512', type: 'image/jpeg' } 
+                    ]
+                });
+
+                // Setzt die Action Handler (diese sind nur deko, da der Player ein iframe ist)
+                navigator.mediaSession.setActionHandler('play', () => {
+                    console.log('Media Session: Play pressed');
+                });
+                navigator.mediaSession.setActionHandler('pause', () => {
+                    console.log('Media Session: Pause pressed');
+                });
+                
+                // Setzt den Zustand auf "playing", damit die Metadaten angezeigt werden
+                navigator.mediaSession.playbackState = 'playing'; 
+            }
+            
+            // Lädt die Tracks dynamisch
+            loadTracklist();
+        }
+    </script>
+    
     <!-- Überlagerung für bessere Lesbarkeit --><div class="overlay"></div>
 
-    <!-- 1. HEADER: Social Media & Logo (Breite 4XL für mehr Platz) --><header class="max-w-4xl w-full content-box relative z-20 mb-6 p-4">
-        <div class="flex flex-col md:flex-row justify-between items-center">
-            
-            <!-- Logo/Titel Links --><a href="index.html" class="text-[#ffa45e] font-black text-3xl tracking-widest uppercase mb-4 md:mb-0  transition duration-200">
-                THE WEST DISPATCH
-            </a>
-            
-            <!-- Navigation Rechts --><nav class="flex flex-wrap justify-center md:justify-end space-x-4 md:space-x-8 text-lg font-semibold">
-                <a href="index.html" class="accent-text hover:underline transition duration-200">Home</a>
-                <!-- Hover-Farbe auf #ffa45e geändert --><a href="radio.html" class="text-white hover:text-[#ffa45e] transition duration-200">Radio</a>
-                
-            </nav>
-        </div>
-    </header>
 
-     <!-- NEUE BOX: DEUTSCHER CONTENT --><div class="max-w-4xl w-full content-box p-4 mb-4 text-center">
-            <p class="text-xl font-bold text-[#80ffd7] uppercase tracking-wide">Musik muss man teilen!</p>
+    <!-- 1. CONTAINER: Social Media Links (Header-Leiste) - Spitze Ecken und Schatten -->
+    <div class="max-w-xl w-full bg-[#424242] bg-opacity-90 p-3 relative z-10 mb-4 shadow-xl">
+        <div class="flex justify-between items-center">
+            <!-- Text links in #ffa45e -->
+            <span class="text-[#ffa45e] font-bold text-lg tracking-widest">THE WEST DISPATCH</span>
+            
+            <!-- Icons rechts -->
+            <div class="flex space-x-6 text-[#80ffd7]">
+                <!-- YouTube -->
+                <a href="https://www.youtube.com/@TheWestDispatch" target="_blank" aria-label="YouTube" class="text-2xl hover:text-white transition duration-200">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <!-- Instagram -->
+                <a href="https://www.tiktok.com/@thewestdispatch" target="_blank" aria-label="Instagram" class="text-2xl hover:text-white transition duration-200">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <!-- TikTok -->
+                <a href="https://www.instagram.com/thewestdispatch" target="_blank" aria-label="TikTok" class="text-2xl hover:text-white transition duration-200">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/profile.php?id=61582519846250" target="_blank" aria-label="Facebook" class="text-2xl hover:text-white transition duration-200">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <!-- Mixcloud -->
+                <a href="https://www.mixcloud.com/TheWestDispatch/" target="_blank" aria-label="Mixcloud" class="text-2xl hover:text-white transition duration-200">
+                    <i class="fab fa-mixcloud"></i>
+                </a>
+            </div>
         </div>
- <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@thewestdispatch" data-unique-id="thewestdispatch" data-embed-type="creator" style="max-width: 780px; min-width: 288px;" > <section> <a target="_blank" href="https://www.tiktok.com/@thewestdispatch?refer=creator_embed">@thewestdispatch</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+    </div>
+
+    <!-- 2. CONTAINER: Hauptcontainer (Infos und Stream-Button) - Spitze Ecken und Schatten -->
+    <div class="max-w-xl w-full bg-[#424242] bg-opacity-90 p-8 relative z-10 shadow-xl">
+        
+        <!-- NEU: Wrapper für quadratisches (1:1) Seitenverhältnis des Bildes -->
+        <div class="w-full aspect-square relative mb-4">
+            <!-- Cover Bild: Pfad auf "Images/week21.jpg" gesetzt -->
+            <img src="Images/cover.jpg" alt="Cover Bild" class="absolute inset-0 w-full h-full object-cover">
+        </div>
+        
+        <!-- Überschrift mit Farbe #80ffd7 -->
+        <h1 class="text-3xl font-bold mb-4 text-[#80ffd7] text-center uppercase">The West Dispatch Radio</h1>
+        
+        <!-- Text unter der Überschrift -->
+        <p class="text-white text-lg mb-2 text-center">Ausgabe 22 - 23.11.25</p>
+
+        <!-- NEU: Beschreibung des Inhalts -->
+        <p class="text-sm text-white-400 text-center mb-6 leading-relaxed">
+            Dieses mal mit der ersten Single des interessanten neuen Albums von Charli xcx - Dem Vater der Disco, Giorgio Moroder - Hyperpop mit 2hollis, Mechatok, Ecco2k und Bladee -einem melancholischen Klassiker von Yung Lean - und vielen mehr!
+        </p>
+        
+        <!-- NEUER BUTTON: Auf Mixcloud streamen (grün-blau) -->
+        <div class="flex justify-center mt-6">
+            <a href="https://www.mixcloud.com/TheWestDispatch/the-west-dispatch-radio-231125-ausgabe-22/" target="_blank" class="flex items-center text-center space-x-3 bg-[#80ffd7] text-black font-bold py-3 px-8 shadow-md hover:bg-[#a6fff0] transition duration-200 uppercase text-lg tracking-wider">
+                <i class="fas fa-play"></i>
+                <span>Auf Mixcloud Streamen</span>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- 3. CONTAINER: Tracklist - Spitze Ecken und Schatten -->
+    <div class="max-w-xl w-full bg-[#424242] bg-opacity-90 p-8 relative z-10 mt-4 shadow-xl">
+        
+        <h2 class="text-xl font-bold mb-4 text-[#80ffd7] text-center uppercase">Tracklist</h2>
+        
+        <!-- Tracklist Container: Jetzt leer. Die Tracks werden per JavaScript aus tracklist.txt geladen. -->
+        <ul id="tracklist-container" class="text-white text-sm space-y-3 list-none p-0">
+            <!-- Tracks werden hier dynamisch eingefügt -->
+        </ul>
+        
+    </div>
+
+    <br><br><br>
+
     <!-- NEUER ABSCHNITT: Social Media Promotions (4 Boxen nebeneinander) --><section class="max-w-4xl w-full relative z-10 mb-6">
         <!-- Das Grid wurde von md:grid-cols-3 auf lg:grid-cols-4 umgestellt, um 4 Boxen nebeneinander zu ermöglichen --><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             
@@ -147,57 +354,7 @@
             </div>
         </div>
     </section>
-    <!-- ENDE: Social Media Promotions --><!-- 2. HAUPT-LAYOUT: Der Hauptinhalt nimmt jetzt die volle Breite ein --><main class="max-w-4xl w-full relative z-10 mb-6">
-
-        <!-- AKTUELLE SENDUNG BOX - Volle Breite --><section class="content-box">
-            
-            
-            
-            <!-- NEU: Wrapper für quadratisches (1:1) Seitenverhältnis des Bildes --><a href="radio.html" class="block mb-4 relative group"> <!-- 'relative group' für Positionierung des Play-Buttons und Hover-Effekt --><div class="w-full aspect-video relative overflow-hidden shadow-lg"> 
-                    <!-- Bild oder Video-Vorschau --><img src="Images/week21.jpg" onerror="this.src='https://placehold.co/800x450/424242/ffffff?text=Aktuelles+Cover'" alt="Aktuelles Sendungscover" class="absolute inset-0 w-full h-full object-cover">
-                    
-                    <!-- PLAY-BUTTON OVERLAY --><div class="absolute inset-0 flex items-center justify-center 
-                                bg-black bg-opacity-30 text-white opacity-75 
-                                group-hover:opacity-100 transition-opacity duration-300">
-                        <svg class="h-24 w-24 text-[#80ffd7]" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                </div>
-            </a>
-            
-            <h2 class="text-3xl font-bold mb-2 accent-text"> The West Dispatch Radio</h2>
-            <p class="text-lg text-gray-300 mb-4">Ausgabe 23 - 23.11.25 </p>
-            
-            <p class="text-white mb-6">
-                Tauchen Sie ein in die funkigen Rhythmen des afrikanischen Disco-Revivals. Diesen Monat haben wir Temi Kogbe eingeladen, um eine Auswahl an seltenen 80er-Jahre-Jams aus Nigeria, Ghana und der Elfenbeinküste zu präsentieren. Pure Energie für die Tanzfläche!
-            </p>
-
-            <!-- Direkt-Link zur Unterseite/Player (Button-Stil übernommen) --><a href="radio.html" class="inline-block accent-bg text-black font-bold py-3 px-6 shadow-md hover:accent-hover transition duration-200 uppercase text-sm tracking-wide">
-                Jetzt reinhören
-            </a>
-
-        </section>
-    </main>
-    
-   
-
-    <!-- 3. FOOTER: Social Media Wiederholung & Copyright --><footer class="max-w-4xl w-full content-box relative z-10 mt-6 p-4 text-center text-sm text-gray-400">
-        <div class="flex justify-center space-x-6 text-[#80ffd7]">
-            <!-- Icons rechts (wie im Header der Unterseite). Größe auf 3xl erhöht. -->
-            <a href="https://www.youtube.com/@TheWestDispatch" target="_blank" aria-label="YouTube" class="text-3xl hover:text-white transition duration-200"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.tiktok.com/@thewestdispatch" target="_blank" aria-label="TikTok" class="text-3xl hover:text-white transition duration-200"><i class="fab fa-tiktok"></i></a>
-            <a href="https://www.instagram.com/thewestdispatch/" target="_blank" aria-label="Instagram" class="text-3xl hover:text-white transition duration-200"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/profile.php?id=61582519846250" target="_blank" aria-label="Facebook" class="text-3xl hover:text-white transition duration-200"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.mixcloud.com/TheWestDispatch/" target="_blank" aria-label="Mixcloud" class="text-3xl hover:text-white transition duration-200"><i class="fab fa-mixcloud"></i></a>
-        </div>
-        
-        <!-- Der Copyright-Text wurde entfernt. --></footer>
-    
-   
-    </div>
-
-    <!-- 4. INSTAGRAM EMBED SCRIPT MUSS EINMAL PRO SEITE HINZUGEFÜGT WERDEN --><script async src="//www.instagram.com/embed.js"></script>
+    <!-- ENDE: Social Media Promot
 
 </body>
 </html>
