@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The West Dispatch Radio</title>
     
-    <!-- Tailwind CSS CDN für schnelles, responsives Styling --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind --><script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Font: Lato (Neutral, sauber, weniger rund) --><link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Google Font --><link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     
     <!-- Social Media Logos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -25,40 +25,36 @@
             color: #e2e8f0;
             min-height: 100vh;
         }
-        /* Stellt sicher, dass das iFrame sich an den Container anpasst */
         .mixcloud-embed-container {
             width: 100%;
-            /* Höhe des Mixcloud-Players */
             max-height: 160px; 
             margin-bottom: 24px;
         }
         iframe {
-            /* Ecken des iFrame wurden auf 8px belassen, für einen eingebetteten Player ist das oft erwünscht */
             border-radius: 8px; 
         }
-        /* Optional: Eine leichte Überlagerung, um den Text besser lesbar zu machen */
         .overlay {
-            background-color: rgba(0, 0, 0, 0.5); /* Dunkle, halbtransparente Überlagerung */
+            background-color: rgba(0, 0, 0, 0.5); 
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            z-index: -1; /* Hinter dem Inhalt */
+            z-index: -1; 
         }
-        /* CSS für das Kopieren-Icon, um sicherzustellen, dass es klickbar ist */
+
         .copy-button {
             cursor: pointer;
-            flex-shrink: 0; /* Verhindert, dass der Button schrumpft */
+            flex-shrink: 0; 
             margin-left: 1rem;
         }
 
-        /* Styling für die Lautstärkeslider (Skeuomorph, optional) */
+
         input[type=range] {
             -webkit-appearance: none;
             width: 100%;
             height: 8px;
-            background: #4A90E2; /* Blauer Track */
+            background: #4A90E2; 
             border-radius: 4px;
             cursor: default;
         }
@@ -72,13 +68,12 @@
             cursor: default;
         }
         
-        /* Spezifische Social Media Icon Farben */
+
         .yt-icon { color: #FF0000; }
         .tiktok-icon { color: #FFFFFF; }
         .insta-icon { color: #E1306C; }
         .fb-icon { color: #1877F2; }
 
-        /* NEU: Button-Farben (Markenfarben) */
         .btn-yt { background-color: #FF0000; color: #FFFFFF; }
         .btn-yt:hover { background-color: #CC0000; }
         .btn-tiktok { background-color: #FFFFFF; color: #000000; }
@@ -88,29 +83,28 @@
         .btn-fb { background-color: #1877F2; color: #FFFFFF; }
         .btn-fb:hover { background-color: #1461C4; }
 
-         /* NEU: Anpassung für Social Media Boxen, um quadratisch zu wirken und zentriert zu sein */
+  
         .social-box {
-            padding: 2.5rem; /* etwas weniger Padding, um kompakter zu sein */
+            padding: 2.5rem; 
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between; /* Icon oben, Button unten */
-            /* Min-Höhe, um eine quadratische Form auf gängigen Breiten zu simulieren */
+            justify-content: space-between; 
             min-height: 200px; 
         }
         @media (min-width: 1024px) {
             .social-box {
-                /* Auf Desktops die Höhe leicht erhöhen für eine bessere quadratische Optik */
+
                 min-height: 250px; 
             }
         }
 
-         /* Standard-Container-Stil für die Boxen - border-radius auf 0 gesetzt */
+
         .content-box {
             background-color: #424242;
             background-color: rgba(66, 66, 66, 0.95);
             padding: 2rem;
-            border-radius: 0; /* Ecken spitz gemacht */
+            border-radius: 0; 
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s, box-shadow 0.3s;
         }
@@ -124,15 +118,14 @@
 <body class="flex flex-col items-center p-4 py-10 relative">
     <!-- Funktion zum Kopieren in die Zwischenablage -->
     <script>
-        // Funktion zum Kopieren von Text in die Zwischenablage
         function copyToClipboard(text, buttonElement) {
             try {
-                // Führt den Kopierbefehl aus
+
                 const tempInput = document.createElement('textarea');
                 tempInput.value = text;
                 document.body.appendChild(tempInput);
                 tempInput.select();
-                // document.execCommand('copy') ist notwendig, da navigator.clipboard im iFrame eingeschränkt sein kann
+
                 document.execCommand('copy'); 
                 document.body.removeChild(tempInput);
 
