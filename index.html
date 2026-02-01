@@ -7,7 +7,10 @@
     
     <!-- Tailwind CSS CDN für schnelles, responsives Styling --><script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Font: Lato (Neutral, sauber, weniger rund) --><link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Google Font -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Candal&family=Lexend+Tera:wght@100..900&display=swap" rel="stylesheet">
     
     <!-- Font Awesome für Icons (Social Media Logos) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -15,10 +18,14 @@
     <style>
         /* CSS für das Styling */
         body {
-            /* Schriftart auf Lato gesetzt */
-            font-family: 'Lato', sans-serif; 
-            /* Hintergrundbild: Pfad wurde übernommen. */
-            background-image: url('Images/west dispatch cover background.png');
+            /* Schriftart */
+            font-family: "Lexend Tera", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+            letter-spacing: -1px;
+            /* Hintergrundbild */
+            background-image: url('Images/west\ dispatch\ cover\ background\ \ NEO.png');
             background-size: cover; /* Bild deckt den gesamten Hintergrund ab */
             background-position: center; /* Bild zentrieren */
             background-attachment: fixed; /* Bild bleibt beim Scrollen fixiert */
@@ -107,8 +114,8 @@
 
          /* Standard-Container-Stil für die Boxen - border-radius auf 0 gesetzt */
         .content-box {
-            background-color: #424242;
-            background-color: rgba(66, 66, 66, 0.95);
+            background-color: #111111;
+            background-color: #111111;
             padding: 2rem;
             border-radius: 0; /* Ecken spitz gemacht */
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
@@ -251,7 +258,9 @@
 
 
     <!-- 1. CONTAINER: Social Media Links (Header-Leiste) - Spitze Ecken und Schatten -->
-    <div class="max-w-xl w-full bg-[#424242] bg-opacity-90 p-3 relative z-10 mb-4 shadow-xl">
+
+     <!-- Klammern bei bg entfernen um Hintergrundfarbe wieder zu aktivieren -->
+    <div class="max-w-xl w-full bg-[(#222121(] bg-opacity-90 p-3 relative z-10 mb-4 shadow-xl">
         <div class="flex justify-between items-center">
             <!-- Text links in #ffa45e -->
             <span class="text-[#ffa45e] font-bold text-lg tracking-widest">THE WEST DISPATCH</span>
@@ -274,16 +283,19 @@
                 <a href="https://www.facebook.com/profile.php?id=61582519846250" target="_blank" aria-label="Facebook" class="text-2xl hover:text-white transition duration-200">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <!-- Mixcloud -->
+                <!-- Mixcloud
                 <a href="https://www.mixcloud.com/TheWestDispatch/" target="_blank" aria-label="Mixcloud" class="text-2xl hover:text-white transition duration-200">
-                    <i class="fab fa-mixcloud"></i>
+                    <i class="fab fa-mixcloud"></i>  
+                -->
                 </a>
             </div>
         </div>
     </div>
 
     <!-- 2. CONTAINER: Hauptcontainer (Infos und Stream-Button) - Spitze Ecken und Schatten -->
-    <div class="max-w-xl w-full bg-[#424242] bg-opacity-90 p-8 relative z-10 shadow-xl">
+
+    <!-- Klammern bei bg entfernen um Hintergrundfarbe wieder zu aktivieren -->
+    <div class="max-w-xl w-full bg-[(#222121(] bg-opacity-90 p-8 relative z-10 shadow-xl">
         
         <!-- NEU: Wrapper für quadratisches (1:1) Seitenverhältnis des Bildes -->
         <div class="w-full aspect-square relative mb-4">
@@ -299,7 +311,7 @@
 
         <!-- NEU: Beschreibung des Inhalts -->
         <p class="text-sm text-white-400 text-center mb-6 leading-relaxed">
-         Jede Woche neue Ausgabe von The West Dispatch Radio! Deinem alternativen und experimentellen Radio um neue Musik zu entdecken <3 
+         Jede Woche neue Ausgabe von The West Dispatch Radio! Deinem alternativen und experimentellen Radio um neue Musik zu entdecken!  
 
         </p>
 
